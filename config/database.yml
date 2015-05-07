@@ -27,6 +27,6 @@ production:
   database: d6o7o25ja8c33e
   user: erhnhnnurpytxd
   password: z0ZvV3lPue8_-OdAbScikJR25k
-  port: 5432
+  port: 5432 
 
 
