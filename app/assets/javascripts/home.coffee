@@ -21,19 +21,43 @@
   window.thread=setInterval ()->
 
     window.animate_thread(window.slides_array)
-  ,15000
+  ,10000
   window.animate_thread(window.slides_array)
-  callContainer.onmouseover=()->
-    console.log "remove animate thread"
+  callContainer.onmouseenter=(e)->
+
+    console.log e
     clearInterval(window.thread)
-  callContainer.onmouseout=()->
-    console.log "add animate thread"
+    $e=e.toElement
+    for element in $e.querySelectorAll('.slide')
+      is_hover=false
+      for cl in element.classList
+        if cl=='hover-block'
+          is_hover=true
+      unless is_hover
+        element.classList.add('all_hide')
+      else
+        element.classList.add('zoom_in')
+
+  callContainer.onmouseleave=(e)->
+    console.log e
     window.thread=setInterval ()->
       window.animate_thread(window.slides_array)
-    ,15000
+    ,10000
+    $e=e.fromElement
+    for element in $e.querySelectorAll('.slide')
+      is_hover=false
+      for cl in element.classList
+        if cl=='hover-block'
+          is_hover=true
+      unless is_hover
+        console.log(element)
+        console.log "is not hover"
+        element.classList.remove('all_hide')
+      else
+        element.classList.remove('zoom_in')
 
 @animate_thread=(objs)->
-  console.log 'interval'
+  #console.log 'interval'
   timeout=2000
   in_class="zoom_in"
   out_class="zoom_out"
@@ -50,8 +74,8 @@
 
     delay=timeout*(i+1)
 
-    console.log "time_out "+delay
-    console.log slide
+    #console.log "time_out "+delay
+    #console.log slide
 
 
 
