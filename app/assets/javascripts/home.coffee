@@ -27,7 +27,10 @@
 
     console.log e
     clearInterval(window.thread)
-    $e=e.toElement
+    if e.toElement
+      $e=e.toElement
+    else
+      $e=e.target
     for element in $e.querySelectorAll('.slide')
       is_hover=false
       for cl in element.classList
@@ -43,7 +46,10 @@
     window.thread=setInterval ()->
       window.animate_thread(window.slides_array)
     ,10000
-    $e=e.fromElement
+    if e.toElement
+      $e=e.toElement
+    else
+      $e=e.target
     for element in $e.querySelectorAll('.slide')
       is_hover=false
       for cl in element.classList
