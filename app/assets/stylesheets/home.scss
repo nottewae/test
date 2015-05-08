@@ -4,7 +4,9 @@
 @mixin zz($x,$y){
   -moz-transform: scale($x,$y) !important;
   -o-transform: scale($x,$y) !important;
+  -webkit-transform: scale($x,$y) !important;
   transform: scale($x,$y) !important;
+
 
 }
 @mixin trans_opacity(){
