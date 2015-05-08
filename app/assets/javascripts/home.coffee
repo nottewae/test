@@ -11,12 +11,23 @@
 @thread = ''
 @slides_array = []
 @waitDoc()
+@timeouts=[]
 @mainFunction = ()->
+
   callContainer=document.getElementById('myknopka')
+  callContainer.setAttribute('style',' ')
+  if callContainer.hasAttribute("right")
+    callContainer.setAttribute('style',callContainer.getAttribute('style')+'right:'+callContainer.getAttribute('right')+'px; ')
+    callContainer.removeAttribute('right')
+  if callContainer.hasAttribute("bottom")
+    callContainer.setAttribute('style',callContainer.getAttribute('style')+'bottom:'+callContainer.getAttribute('bottom')+'px; ')
+    callContainer.removeAttribute('bottom')
+
+  window.callContainer=document.getElementById('myknopka')
   window.slides_array=callContainer.querySelectorAll('.slide')
   window.thread=setInterval ()->
     window.animate_thread(window.slides_array)
-  ,10000
+  ,8000
   window.animate_thread(window.slides_array)
   callContainer.onmouseenter=(e)->
     console.log e
@@ -37,12 +48,12 @@
       else
         element.classList.remove('zoom_out')
         element.classList.add('zoom_in')
+        element.classList.add('active')
 
   callContainer.onmouseleave=(e)->
     console.log e
-    window.thread=setInterval ()->
-      window.animate_thread(window.slides_array)
-    ,10000
+
+
     if e.fromElement
       $e=e.fromElement
     else
@@ -63,6 +74,21 @@
       else
         console.log "is hover"
         element.classList.remove('zoom_in')
+        element.classList.remove('active')
+    for timeout in window.timeouts
+      clearTimeout(timeout)
+    window.timeouts=[]
+    for cl in e.fromElement.classList
+      active = false
+      if cl=='active'
+        active= true
+    unless active
+      window.thread=setInterval ()->
+        window.animate_thread(window.slides_array)
+      ,8000
+      window.animate_thread(window.slides_array)
+
+
     #$e.querySelectorAll('.slide')[0].classList.add('zoom_in')
 
 
@@ -92,12 +118,28 @@
     i++
   return
 @rotate_slide=(next,slide,time_out,prevous,all)->
-  setTimeout ()->
-    prevous.classList.remove('zoom_in')
-    prevous.classList.add('zoom_out')
+  console.log all
+  window.timeouts.push setTimeout ()->
+    for cl in prevous.classList
+      active=false
+      if cl=='active'
+        active=true
+    unless active
+      prevous.classList.remove('zoom_in')
+      prevous.classList.add('zoom_out')
+
+
     for e in all
-      e.classList.remove('zoom_in')
-    setTimeout ()->
+      active=false
+      for cl in e.classList
+        if cl=='active'
+          active=true
+      unless active
+        e.classList.remove('zoom_in')
+        e.classList.add('zoom_out')
+
+    window.timeouts.push setTimeout ()->
+
       slide.classList.remove('zoom_out')
       slide.classList.add('zoom_in')
     ,500
