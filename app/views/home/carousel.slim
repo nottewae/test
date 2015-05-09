@@ -1,1 +1,10 @@
-car
+.container-fluid
+  .row
+    #carousel-fluid.carousel.slide style="width:100%;height:100%" data-ride="carousel"
+      .carousel-inner role="listbox"
+        .item.active.companion-slide style="background-image:url(#{asset_path 'slide1.jpg'});"
+          .carousel-caption Здесь можно сообщить нечто к первому слайду
+        .item.companion-slide style="background-image:url(#{asset_path 'slide2.jpg'});"
+          .carousel-caption Обратите пристальное внимание на тот факт, что class active присутствует только! в первом слайде.
+        .item.companion-slide style="background-image:url(#{asset_path 'slide3.jpg'});"
+          .carousel-caption Здесь можно сообщить нечто к третьему слайду
