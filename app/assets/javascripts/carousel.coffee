@@ -7,13 +7,13 @@ $(document).ready ()->
     $('.companion-slide').each (index,el)->
 
       $(el).height $(window).height()
-      if $(el).css('background-images')!="none"
+      if $(el).css('background-image')!="none"
         data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
       window.place_elements($(el))
     $(window).resize ()->
       $('.companion-slide').each (index,el)->
         $(el).height $(window).height()
-        if $(el).css('background-images')!="none"
+        if $(el).css('background-image')!="none"
           data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
         window.place_elements($(el))
 
