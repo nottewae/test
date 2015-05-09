@@ -1,7 +1,7 @@
 // require jquery
 // require jquery_ujs
 // require turbolinks
-//= require_tree .
+//= require home
 
 (function(funcName, baseObj) {
     // The public function name defaults to window.docReady
