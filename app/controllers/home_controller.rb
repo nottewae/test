@@ -3,4 +3,7 @@ class HomeController < ApplicationController
     @arrdd="sdfgh"
     puts @arrdd
   end
+  def carousel
+    render layout: 'jquery'
+  end
 end
