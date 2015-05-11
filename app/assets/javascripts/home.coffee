@@ -13,6 +13,7 @@
 @waitDoc()
 @timeouts=[]
 @mainFunction = ()->
+  window.onscroll=window.scrollEvent
 
   callContainer=document.getElementById('myknopka')
   callContainer.setAttribute('style',' ')
@@ -145,3 +146,5 @@
     ,500
   ,time_out
 
+@scrollEvent=(e)->
+  return
