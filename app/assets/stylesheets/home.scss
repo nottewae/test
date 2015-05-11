@@ -9,6 +9,14 @@
 
 
 }
+@mixin zz_r($x,$y,$r){
+  -moz-transform:  rotate($r+deg) !important;
+  -o-transform:  rotate($r+deg)!important;
+  -webkit-transform:  rotate($r+deg)!important;
+  transform:  rotate($r+deg)!important;
+
+
+}
 
 @mixin trans_settings(){
   -webkit-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -webkit-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
@@ -144,50 +152,28 @@
 }
 @-webkit-keyframes rotate1{
   0%{
-    -moz-transform: rotate(0deg); /* Для Firefox */
-    -ms-transform: rotate(0deg); /* Для IE */
-    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(0deg);
-    transform: rotate(0deg);
+
+    @include zz_r(0.6,0.6,0);
     
   }
   50%{
-    -moz-transform: rotate(30deg); /* Для Firefox */
-    -ms-transform: rotate(30deg); /* Для IE */
-    -webkit-transform: rotate(30deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(30deg);
-    transform: rotate(30deg);
+    @include zz_r(0.6,0.6,30);
   }
   100%{
-    -moz-transform: rotate(0deg); /* Для Firefox */
-    -ms-transform: rotate(0deg); /* Для IE */
-    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(0deg);
-    transform: rotate(0deg);
+    @include zz_r(0.6,0.6,0);
   }
 }
 @keyframes rotate1 {
   0%{
-    -moz-transform: rotate(0deg); /* Для Firefox */
-    -ms-transform: rotate(0deg); /* Для IE */
-    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(0deg);
-    transform: rotate(0deg);
+    @include zz_r(0.6,0.6,0);
   }
   50%{
 
-    -moz-transform: rotate(30deg); /* Для Firefox */
-    -ms-transform: rotate(30deg); /* Для IE */
-    -webkit-transform: rotate(30deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(30deg);
-    transform: rotate(30deg);
+    @include zz_r(0.6,0.6,30);
+
   }
   100%{
-    -moz-transform: rotate(0deg); /* Для Firefox */
-    -ms-transform: rotate(0deg); /* Для IE */
-    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
-    -o-transform:rotate(0deg);
-    transform: rotate(0deg);
+    @include zz_r(0.6,0.6,0);
   }
 }
 
@@ -230,7 +216,7 @@
       padding-top: 0 !important;
       @include trans_settings;
       &.rotator{
-        @include anim(rotator,infinite,1s);
+        @include anim(rotate1,infinite,2s);
       }
     }
     >.slide1,>.slide2,>.slide3,>.hover-block{
