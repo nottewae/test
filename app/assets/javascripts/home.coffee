@@ -153,6 +153,7 @@
   clearInterval(window.thread)
   for timeout in window.timeouts
     clearTimeout(timeout)
+  window.timeouts=[]
   console.log document.body.scrollTop
   console.log window.innerHeight
   summ=document.body.scrollTop+window.innerHeight
@@ -164,7 +165,7 @@
   console.log  offset
   window.callContainer.style.top=offset+'px'
 
-  setTimeout ()->
+  window.timeout.push setTimeout ()->
     window.thread=setInterval ()->
       window.animate_thread(window.slides_array)
     , 8000
