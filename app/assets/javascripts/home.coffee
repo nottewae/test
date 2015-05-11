@@ -12,6 +12,7 @@
 @slides_array = []
 @waitDoc()
 @timeouts=[]
+@init_bottom=''
 @mainFunction = ()->
   window.onscroll=window.scrollEvent
 
@@ -22,7 +23,9 @@
     callContainer.removeAttribute('right')
   if callContainer.hasAttribute("bottom")
     callContainer.setAttribute('style',callContainer.getAttribute('style')+'bottom:'+callContainer.getAttribute('bottom')+'px; ')
+    window.init_bottom=parseInt(callContainer.getAttribute('bottom'))
     callContainer.removeAttribute('bottom')
+
 
   window.callContainer=document.getElementById('myknopka')
   window.slides_array=callContainer.querySelectorAll('.slide')
@@ -31,15 +34,15 @@
   ,8000
   window.animate_thread(window.slides_array)
   callContainer.onmouseenter=(e)->
-    console.log e
+    #console.log e
     clearInterval(window.thread)
     if e.toElement
       $e=e.toElement
     else
       $e=e.target
-    console.log $e.querySelectorAll('.slide')
+    #console.log $e.querySelectorAll('.slide')
     for element in $e.querySelectorAll('.slide')
-      console.log element
+      #console.log element
       is_hover=false
       for cl in element.classList
         if cl=='hover-block'
@@ -52,28 +55,28 @@
         element.classList.add('active')
 
   callContainer.onmouseleave=(e)->
-    console.log e
+    #console.log e
 
 
     if e.fromElement
       $e=e.fromElement
     else
       $e=e.target
-    console.log $e.querySelectorAll('.slide')
+    #console.log $e.querySelectorAll('.slide')
     for element in $e.querySelectorAll('.slide')
-      console.log element
+      #console.log element
       is_hover=false
       for cl in element.classList
         if cl=='hover-block'
           is_hover=true
-      console.log(element)
+      #console.log(element)
       element.classList.add('zoom_out')
       unless is_hover
 
-        console.log "is not hover"
+        #console.log "is not hover"
         element.classList.remove('all_hide')
       else
-        console.log "is hover"
+        #console.log "is hover"
         element.classList.remove('zoom_in')
         element.classList.remove('active')
     for timeout in window.timeouts
@@ -93,7 +96,7 @@
     #$e.querySelectorAll('.slide')[0].classList.add('zoom_in')
 
 
-@animate_thread=(objs)->
+@animate_thread = (objs)->
   timeout=2000
   in_class="zoom_in"
   out_class="zoom_out"
@@ -119,7 +122,7 @@
     i++
   return
 @rotate_slide=(next,slide,time_out,prevous,all)->
-  console.log all
+  #console.log all
   window.timeouts.push setTimeout ()->
     for cl in prevous.classList
       active=false
@@ -145,6 +148,54 @@
       slide.classList.add('zoom_in')
     ,500
   ,time_out
-
+@prevous_scroll = 0
 @scrollEvent=(e)->
+  clearInterval(window.thread)
+  for timeout in window.timeouts
+    clearTimeout(timeout)
+  console.log document.body.scrollTop
+  console.log window.innerHeight
+  summ=document.body.scrollTop+window.innerHeight
+  console.log summ
+  window.callContainer.style.bottom='auto'
+  bottom=window.init_bottom
+  console.log  bottom
+  offset=(summ-parseInt(bottom)-110)
+  console.log  offset
+  window.callContainer.style.top=offset+'px'
+
+  setTimeout ()->
+    window.thread=setInterval ()->
+      window.animate_thread(window.slides_array)
+    , 8000
+  , 2000
   return
+@css=(obj , key , value)->
+  style=''
+  if obj.hasAttribute('style')
+    style=obj.getAttribute('style')
+  css={}
+  arr1=style.split(";")
+  ret=null
+  for key in arr1
+    css[key.split(":")[0]]=key.split(":")[1]
+  if key and value
+    for k,v in css
+      if key==k
+        css[k]=v
+        ret=css[k]
+  else if key and !value
+
+    for k,v in css
+      if key==k
+        ret = css[k]
+  else
+    ret = css
+  string=''
+  for k,v in css
+    string += k+':'+v+';'
+  obj.setAttribute('style',string)
+  return ret
+
+
+

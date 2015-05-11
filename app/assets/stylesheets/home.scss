@@ -33,6 +33,42 @@
   animation-duration: $duration;
   animation-iteration-count: $type;
 }
+@-webkit-keyframes position_scroll{
+  0%{
+    position: absolute;
+
+  }
+
+  50%{
+    position: absolute;
+    top:50%;
+
+  }
+  100%{
+    position: absolute;
+    top:80%;
+  }
+}
+.scroll_top{
+  @include anim(position_scroll,normal,2s);
+}
+@keyframes position_scroll {
+  0%{
+    position: absolute;
+
+
+  }
+
+  50%{
+    position: absolute;
+    top:50%;
+
+  }
+  100%{
+    top:80%;
+    position: absolute;
+  }
+}
 @-webkit-keyframes zoom_in{
   0%{
     @include zz(.0,0.3);
@@ -108,7 +144,7 @@
 
 
 .call-container {
-  position:fixed;
+  position:absolute;
   right:20px;
   bottom:20px;
   transition: all 0.5s;
