@@ -163,12 +163,22 @@
   console.log  bottom
   offset=(summ-parseInt(bottom)-110)
   console.log  offset
-  window.callContainer.style.top=offset+'px'
-
+  window.callContainer.classList.add 
+  window.callContainer.style.top=offset-40+'px'
+  window.timeouts.push setTimeout ()->
+    window.callContainer.style.top=offset+40+'px'
+  ,400
+  window.timeouts.push setTimeout ()->
+    window.callContainer.style.top=offset-40+'px'
+  ,800
+  window.timeouts.push setTimeout ()->
+    window.callContainer.style.top=offset+'px'
+  ,1200
   window.timeout.push setTimeout ()->
     window.thread=setInterval ()->
       window.animate_thread(window.slides_array)
     , 8000
+    window.animate_thread(window.slides_array)
   , 2000
   return
 @css=(obj , key , value)->
