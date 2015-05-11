@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5541872">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state vertical-scroll-proportion="-3.9375">
+              <caret line="21" column="122" selection-start-line="21" selection-start-column="122" selection-end-line="21" selection-end-column="122" />
               <folding>
                 <element signature="e#3208#5371#2" expanded="true" />
               </folding>
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.coffee" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.coffee" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-62.058823">
-              <caret line="213" column="13" selection-start-line="213" selection-start-column="13" selection-end-line="213" selection-end-column="13" />
+            <state vertical-scroll-proportion="-3.0689654">
+              <caret line="80" column="42" selection-start-line="65" selection-start-column="4" selection-end-line="80" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -1083,21 +1083,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-62.058823">
-          <caret line="213" column="13" selection-start-line="213" selection-start-column="13" selection-end-line="213" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5541872">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state vertical-scroll-proportion="-3.9375">
+          <caret line="21" column="122" selection-start-line="21" selection-start-column="122" selection-end-line="21" selection-end-column="122" />
           <folding>
             <element signature="e#3208#5371#2" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0689654">
+          <caret line="80" column="42" selection-start-line="65" selection-start-column="4" selection-end-line="80" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
