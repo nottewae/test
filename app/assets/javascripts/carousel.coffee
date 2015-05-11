@@ -75,7 +75,7 @@ $(document).ready ()->
   data.top_offset=($(window).height()-data.tmp_height)/2
   #console.log data
   $object.css {
-    "background-size":data.tmp_width+'px'
+    "background-size":data.tmp_width+10+'px'
     "background-position": data.left_offset+'px '+data.top_offset+'px'
   }
   return data
