@@ -155,29 +155,39 @@
     clearTimeout(timeout)
   window.timeouts=[]
   console.log document.body.scrollTop
-  console.log window.innerHeight
-  summ=document.body.scrollTop+window.innerHeight
-  console.log summ
+  console.log document.documentElement.scrollTop
+  if document.documentElement.scrollTop
+    scrollTop=document.documentElement.scrollTop
+  else
+
+    scrollTop=document.body.scrollTop
+  summ=scrollTop+window.innerHeight
+  console.log scrollTop
   window.callContainer.style.bottom='auto'
   bottom=window.init_bottom
-  console.log  bottom
+
   offset=(summ-parseInt(bottom)-110)
-  console.log  offset
-  window.callContainer.classList.add 
-  window.callContainer.style.top=offset-40+'px'
+
+
+  window.callContainer.style.top=(offset-40)+'px'
+
+  window.callContainer.querySelector('.phone').classList.add 'rotator'
+
   window.timeouts.push setTimeout ()->
-    window.callContainer.style.top=offset+40+'px'
+    window.callContainer.style.top=(offset+40)+'px'
   ,400
   window.timeouts.push setTimeout ()->
-    window.callContainer.style.top=offset-40+'px'
+    window.callContainer.style.top=(offset-40)+'px'
   ,800
   window.timeouts.push setTimeout ()->
     window.callContainer.style.top=offset+'px'
+    window.callContainer.querySelector('.phone').classList.remove 'rotator'
   ,1200
-  window.timeout.push setTimeout ()->
+  window.timeouts.push setTimeout ()->
     window.thread=setInterval ()->
       window.animate_thread(window.slides_array)
     , 8000
+
     window.animate_thread(window.slides_array)
   , 2000
   return

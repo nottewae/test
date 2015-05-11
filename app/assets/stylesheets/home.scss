@@ -15,6 +15,7 @@
   -moz-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -moz-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
   -o-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -o-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
   transition: opacity 0.5s cubic-bezier(.19,1,.22,1), transform 0.5s cubic-bezier(.19,1,.22,1) !important;
+
 }
 @mixin transition($property,$duration,$type){
   -webkit-transition: $property $duration $type;
@@ -141,6 +142,54 @@
     opacity:1;
   }
 }
+@-webkit-keyframes rotate1{
+  0%{
+    -moz-transform: rotate(0deg); /* Для Firefox */
+    -ms-transform: rotate(0deg); /* Для IE */
+    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(0deg);
+    transform: rotate(0deg);
+    
+  }
+  50%{
+    -moz-transform: rotate(30deg); /* Для Firefox */
+    -ms-transform: rotate(30deg); /* Для IE */
+    -webkit-transform: rotate(30deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(30deg);
+    transform: rotate(30deg);
+  }
+  100%{
+    -moz-transform: rotate(0deg); /* Для Firefox */
+    -ms-transform: rotate(0deg); /* Для IE */
+    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+@keyframes rotate1 {
+  0%{
+    -moz-transform: rotate(0deg); /* Для Firefox */
+    -ms-transform: rotate(0deg); /* Для IE */
+    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50%{
+
+    -moz-transform: rotate(30deg); /* Для Firefox */
+    -ms-transform: rotate(30deg); /* Для IE */
+    -webkit-transform: rotate(30deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(30deg);
+    transform: rotate(30deg);
+  }
+  100%{
+    -moz-transform: rotate(0deg); /* Для Firefox */
+    -ms-transform: rotate(0deg); /* Для IE */
+    -webkit-transform: rotate(0deg); /* Для Safari, Chrome, iOS */
+    -o-transform:rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
 
 
 .call-container {
@@ -180,6 +229,9 @@
       left:0px !important;
       padding-top: 0 !important;
       @include trans_settings;
+      &.rotator{
+        @include anim(rotator,infinite,1s);
+      }
     }
     >.slide1,>.slide2,>.slide3,>.hover-block{
       position: absolute;
