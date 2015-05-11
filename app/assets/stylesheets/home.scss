@@ -2,27 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @mixin zz($x,$y){
-  -moz-transform: scale($x,$y) !important;
-  -o-transform: scale($x,$y) !important;
-  -webkit-transform: scale($x,$y) !important;
-  transform: scale($x,$y) !important;
+  -moz-transform: scale($x,$y);
+  -o-transform: scale($x,$y);
+  -webkit-transform: scale($x,$y);
+  transform: scale($x,$y);
 
 
 }
 @mixin zz_r($x,$y,$r){
-  -moz-transform:  rotate($r+deg) !important;
-  -o-transform:  rotate($r+deg)!important;
-  -webkit-transform:  rotate($r+deg)!important;
-  transform:  rotate($r+deg)!important;
+  -moz-transform:  rotate($r+deg) scale($x,$y) !important;
+  -o-transform:  rotate($r+deg) scale($x,$y) !important;
+  -webkit-transform:  rotate($r+deg) scale($x,$y) !important;
+  transform:  rotate($r+deg) scale($x,$y) !important;
 
 
 }
 
 @mixin trans_settings(){
-  -webkit-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -webkit-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
-  -moz-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -moz-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
-  -o-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -o-transform 0.5s cubic-bezier(.19,1,.22,1) !important;
-  transition: opacity 0.5s cubic-bezier(.19,1,.22,1), transform 0.5s cubic-bezier(.19,1,.22,1) !important;
+  -webkit-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -webkit-transform 0.2s cubic-bezier(.19,1,.22,1) !important;
+  -moz-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -moz-transform 0.2s cubic-bezier(.19,1,.22,1) !important;
+  -o-transition: opacity 0.5s cubic-bezier(.19,1,.22,1), -o-transform 0.2s cubic-bezier(.19,1,.22,1) !important;
+  transition: opacity 0.5s cubic-bezier(.19,1,.22,1), transform 0.2s cubic-bezier(.19,1,.22,1) !important;
 
 }
 @mixin transition($property,$duration,$type){
@@ -140,41 +140,58 @@
 }
 @keyframes anim_background2 {
   0%{
-    opacity:1;
+    opacity: 0.6;
   }
   50%{
 
     opacity:0.2;
   }
   100%{
-    opacity:1;
+    opacity: 0.6;
   }
 }
 @-webkit-keyframes rotate1{
   0%{
 
-    @include zz_r(0.6,0.6,0);
+    top:-0px;
     
   }
+  25%{
+    @include zz_r(.6,.6,90);
+    top:-5px;
+  }
   50%{
-    @include zz_r(0.6,0.6,30);
+    top:-0px;
+  }
+  75%{
+    top:5px;
+    @include zz_r(.6,.6,-90);
   }
   100%{
-    @include zz_r(0.6,0.6,0);
+    top:-0px;
   }
 }
 @keyframes rotate1 {
   0%{
-    @include zz_r(0.6,0.6,0);
+
+    top:-0px;
+
+  }
+  25%{
+    top:-5px;
+    @include zz_r(.6,.6,90);
   }
   50%{
-
-    @include zz_r(0.6,0.6,30);
-
+    top:-0px;
+  }
+  75%{
+    top:5px;
+    @include zz_r(.6,.6,-90);
   }
   100%{
-    @include zz_r(0.6,0.6,0);
+    top:-0px;
   }
+
 }
 
 
@@ -187,6 +204,7 @@
     .background-flick{
       width: 110px;
       height: 101px;
+      opacity: 0.6;
       background-image: url(data:image/png;base64,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);
       position: absolute;
       left:-31px;
@@ -215,9 +233,7 @@
       left:0px !important;
       padding-top: 0 !important;
       @include trans_settings;
-      &.rotator{
-        @include anim(rotate1,infinite,2s);
-      }
+
     }
     >.slide1,>.slide2,>.slide3,>.hover-block{
       position: absolute;

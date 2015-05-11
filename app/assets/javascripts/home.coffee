@@ -172,7 +172,30 @@
   window.callContainer.style.top=(offset-40)+'px'
 
   window.callContainer.querySelector('.phone').classList.add 'rotator'
+  window.callContainer.querySelector('.slide').classList.remove 'zoom_in'
+  for e in window.callContainer.querySelectorAll('.slide')
 
+    e.classList.add 'all_hide'
+  window.callContainer.querySelector('.phone').classList.add 'zoom_in'
+  window.callContainer.querySelector('.phone').classList.remove 'all_hide'
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(40deg) scale(0.6,0.6)'
+  ,300
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(0deg) scale(0.6,0.6)'
+  ,600
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(40deg) scale(0.6,0.6)'
+  ,900
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(0deg) scale(0.6,0.6)'
+  ,1100
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(40deg) scale(0.6,0.6)'
+  ,1400
+  setTimeout ()->
+    window.callContainer.querySelector('.phone').style.transform='rotate(0deg) scale(0.6,0.6)'
+  ,1700
   window.timeouts.push setTimeout ()->
     window.callContainer.style.top=(offset+40)+'px'
   ,400
@@ -182,6 +205,11 @@
   window.timeouts.push setTimeout ()->
     window.callContainer.style.top=offset+'px'
     window.callContainer.querySelector('.phone').classList.remove 'rotator'
+    window.callContainer.querySelector('.phone').classList.remove 'zoom_in'
+    for e in window.callContainer.querySelectorAll('.slide')
+
+      e.classList.remove 'all_hide'
+
   ,1200
   window.timeouts.push setTimeout ()->
     window.thread=setInterval ()->
