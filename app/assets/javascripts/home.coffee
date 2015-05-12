@@ -14,8 +14,8 @@
 @timeouts=[]
 @init_bottom=''
 @mainFunction = ()->
-  window.onscroll=window.scrollEvent
 
+  window.onscroll=window.scrollEvent
   callContainer=document.getElementById('myknopka')
   callContainer.setAttribute('style',' ')
   if callContainer.hasAttribute("right")
@@ -33,6 +33,9 @@
     window.animate_thread(window.slides_array)
   ,8000
   window.animate_thread(window.slides_array)
+  setInterval ()->
+    window.onscroll(scrollEvent())
+  ,30000
   callContainer.onmouseenter=(e)->
     #console.log e
     clearInterval(window.thread)
