@@ -16,7 +16,25 @@ $(document).ready ()->
           if $(el).css('background-image')!="none"
             data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
           window.place_elements($(el))
+  ,1000
+  setTimeout ()->
+    $(window).resize()
+  ,20000
+  setTimeout ()->
+    $(window).resize()
   ,10000
+  setTimeout ()->
+    $(window).resize()
+  ,5000
+  setTimeout ()->
+    $(window).resize()
+  ,3000
+  setTimeout ()->
+    $(window).resize()
+  ,2000
+  setTimeout ()->
+    $(window).resize()
+  ,1000
 
 @current_slide=0
 @images={count:0}
