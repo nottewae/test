@@ -16,7 +16,7 @@ $(document).ready ()->
           if $(el).css('background-image')!="none"
             data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
           window.place_elements($(el))
-  ,4000
+  ,10000
 
 @current_slide=0
 @images={count:0}
