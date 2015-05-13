@@ -1,21 +1,22 @@
 $(document).ready ()->
+  setTimeout ()->
+    root = exports ? this
+    if $('.companion-slide').length>0
 
-  root = exports ? this
-  if $('.companion-slide').length>0
-
-    $('.companion-slide').height $(window).height()
-    $('.companion-slide').each (index,el)->
-
-      $(el).height $(window).height()
-      if $(el).css('background-image')!="none"
-        data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
-      window.place_elements($(el))
-    $(window).resize ()->
+      $('.companion-slide').height $(window).height()
       $('.companion-slide').each (index,el)->
+
         $(el).height $(window).height()
         if $(el).css('background-image')!="none"
           data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
         window.place_elements($(el))
+      $(window).resize ()->
+        $('.companion-slide').each (index,el)->
+          $(el).height $(window).height()
+          if $(el).css('background-image')!="none"
+            data=window.rezise_background $(el), $(el).css('background-image').split("(")[1].split(")")[0]
+          window.place_elements($(el))
+  ,1000
 
 @current_slide=0
 @images={count:0}
@@ -75,7 +76,7 @@ $(document).ready ()->
   data.top_offset=($(window).height()-data.tmp_height)/2
   #console.log data
   $object.css {
-    "background-size":data.tmp_width+'px'+' '+data.tmp_height+'px'
+    "background-size":data.tmp_width+'px'
     "background-position": data.left_offset+'px '+data.top_offset+'px'
   }
   return data
